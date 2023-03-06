@@ -12,6 +12,7 @@ export function configurePassport(app: Application) {
       {
         usernameField: "email",
       },
+
       async (email, password, done) => {
         try {
           const [user] = await users.findByEmail(email);
@@ -21,10 +22,11 @@ export function configurePassport(app: Application) {
           if (!doesMatch) return done(null, false);
 
           delete user.password;
+          done(null, user);
           return;
         } catch (error) {
           console.log(error);
-          return done(error, false);
+          done(error, false);
         }
       }
     )
@@ -44,4 +46,5 @@ export function configurePassport(app: Application) {
       }
     )
   );
+  console.log("here");
 }
