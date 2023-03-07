@@ -13,33 +13,48 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    POST(isLogin ? "/auth/login" : "/auth/register", form).then((data) => {
-      if (data.token) {
-        localStorage.setItem(TOKEN_KEY, data.token);
-      }
-      alert(data.message || "Nice");
-    });
+    POST(isLogin ? "/auth/login" : "/auth/register", form)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem(TOKEN_KEY, data.token);
+        }
+        alert(data.message || "Nice");
+      })
+      .catch((error) => alert("oh no\n\n" + error));
   };
 
   return (
     <div className="row justify-content-center">
-      <div className="col-12 col-md-9 col-lg-7">
-        <h6>
-          Currently {isLogin ? "logging in" : "registering"}.{" "}
-          <span className="bg-secondary btn" onClick={() => setIsLogin(!isLogin)}>
+      <div className="col-12 col-md-9 col-lg-7 rounded-md">
+        <h3>
+          {isLogin ? <span className="badge">Log In</span> : <span className="badge">Register</span>}
+          <span className="btn btn-primary btn-outline-danger my-2 mx-5 px-3" onClick={() => setIsLogin(!isLogin)}>
             Toggle
           </span>
-        </h6>
-        <form className="bg-light p-3 shadow">
+        </h3>
+        <form className="bg-warning p-3 shadow rounded">
           <label>Email:</label>
-          <input name="email" value={form["email"]} type="text" className="form-control" />
+          <input
+            name="email"
+            value={form["email"]}
+            type="email"
+            className="form-control my-1 mb-2"
+            onChange={handleUpdateForm}
+          />
           <label>Password:</label>
-          <input name="password" value={form["password"]} type="password" className="form-control" />
+          <input
+            name="password"
+            value={form["password"]}
+            type="password"
+            className="form-control my-1"
+            onChange={handleUpdateForm}
+          />
 
           {form["email"] && form["password"] && (
-            <div onClick={handleLogin} className="btn btn-primary">
-              {" "}
-              {isLogin ? "logging in " : "registering"}
+            <div className="justify-content-center d-flex">
+              <div onClick={handleLogin} className="btn btn-primary btn-outline-danger mt-3 mx-5 px-5">
+                {isLogin ? "Log in " : "Register"}
+              </div>
             </div>
           )}
         </form>

@@ -2,11 +2,11 @@ type SUPPORTED_METHODS = "GET" | "POST" | "PUT" | "DELETE";
 
 type AUTH_URLS = `/auth${"/register" | "/login" | "/verify"}`;
 type API_URLS = `/api${"/items" | "/notes"}`;
-type API_WITH_PARAMS = `/${API_URLS}${`/${number}` | `/${number}/toggle` | "/" | ""}`;
+type API_WITH_PARAMS = `${API_URLS}${`/${number}` | `/${number}/toggle` | "/" | ""}`;
 
 type VALID_URL_FORMAT = AUTH_URLS | API_URLS | API_WITH_PARAMS;
 
-const sample: VALID_URL_FORMAT = "/auth/login";
+// const sample: VALID_URL_FORMAT = "/auth/login";
 
 interface fetcherArgs {
   url: VALID_URL_FORMAT;
@@ -17,7 +17,7 @@ interface fetcherArgs {
 interface FetchOpts {
   headers: HeadersInit;
   method: SUPPORTED_METHODS;
-  body: any;
+  body?: any;
 }
 
 export const TOKEN_KEY = "token";
@@ -30,10 +30,12 @@ function fetcher({ url, method, data }: fetcherArgs) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${TOKEN}`,
     };
+
+    if (!TOKEN) delete headers.Authorization;
+
     const fetchOpts: FetchOpts = {
       method,
       headers,
-      body: "" || null,
     };
 
     if (method === "POST" || method === "PUT") {
@@ -43,9 +45,6 @@ function fetcher({ url, method, data }: fetcherArgs) {
       delete headers["Content-Type"];
     }
 
-    if (!TOKEN) delete headers.Authorization;
-    if (method[0] !== "P") delete headers["Content-Type"];
-
     try {
       const res = await fetch(url, fetchOpts);
       const data = await res.json();
@@ -53,7 +52,7 @@ function fetcher({ url, method, data }: fetcherArgs) {
       if (res.ok) {
         resolve(data);
       } else {
-        console.log(data);
+        console.error(data);
         reject(data.message);
       }
     } catch (error) {
