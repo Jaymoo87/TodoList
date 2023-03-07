@@ -1,7 +1,7 @@
 import { Query } from "..";
 import { CreateableItem } from "../../../../types";
 
-const create = (newItem: CreateableItem) => Query("INSERT INTO Items INTO SET ?", [newItem]);
+const create = (newItem: CreateableItem) => Query("INSERT INTO Items SET ?", [newItem]);
 const all = (userid: number) => Query("SELECT * FROM Items WHERE userid=?", [userid]);
 const toggle = (id: number, userid: number, currentStatus: boolean) =>
   Query("UPDATE Items SET is_complete=? WHERE id=? and userid=?", [!currentStatus, id, userid]);
