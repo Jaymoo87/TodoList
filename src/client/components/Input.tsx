@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { POST } from "../services/fetcher";
 
 const Input = () => {
+  const nav = useNavigate();
   const [item, setItem] = useState("");
 
   const handleSubmit = () => {
     POST(`/api/items`, { content: item })
       .then((res) => {
         alert(res.message);
-        console.log(res);
+        nav("/");
       })
       .catch((error) => console.log(error));
   };

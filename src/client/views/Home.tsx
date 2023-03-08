@@ -17,7 +17,7 @@ const Home = () => {
     <>
       <div className="row justify-content-center">
         <Input />
-        <div className="card bg-danger">
+        <div className="card bg-danger rounded">
           {items.map((item, index) => (
             <TodoItem key={index} {...item} />
           ))}

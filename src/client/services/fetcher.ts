@@ -31,12 +31,11 @@ function fetcher({ url, method, data }: fetcherArgs) {
       Authorization: `Bearer ${TOKEN}`,
     };
 
-    if (!TOKEN) delete headers.Authorization;
-
     const fetchOpts: FetchOpts = {
       method,
       headers,
     };
+    if (!TOKEN) delete headers.Authorization;
 
     if (method === "POST" || method === "PUT") {
       const body = JSON.stringify(data);
@@ -63,6 +62,6 @@ function fetcher({ url, method, data }: fetcherArgs) {
 }
 
 export const GET = (url: VALID_URL_FORMAT) => fetcher({ url, method: "GET", data: null });
-export const POST = (url: VALID_URL_FORMAT, data: any) => fetcher({ url, method: "POST", data: null });
+export const POST = (url: VALID_URL_FORMAT, data: any) => fetcher({ url, method: "POST", data });
 export const PUT = (url: VALID_URL_FORMAT, data: any) => fetcher({ url, method: "PUT", data: null });
 export const DELETE = (url: VALID_URL_FORMAT) => fetcher({ url, method: "DELETE", data: null });

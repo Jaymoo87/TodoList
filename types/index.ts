@@ -3,7 +3,7 @@ export interface User extends CreateableUser {
 }
 
 export interface CreateableUser {
-  name: string;
+  name?: string;
   email: string;
   password?: string;
 }

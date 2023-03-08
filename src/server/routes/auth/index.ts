@@ -21,9 +21,11 @@ authRouter.post("/register", async (req, res) => {
     const { insertId } = await users.register({ name, email, password: hashed });
     const token = tokenUtils.sign({ email, id: insertId });
 
-    res.status(201).json({ message: "Congrats!", id: insertId, token });
+    res
+      .status(201)
+      .json({ message: `Congrats! ${name}, use ${email} to login next time you're here`, id: insertId, token });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 });
 

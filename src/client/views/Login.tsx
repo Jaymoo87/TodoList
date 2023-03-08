@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { POST, TOKEN_KEY } from "../services/fetcher";
 
 const Login = () => {
+  const nav = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({
     email: "",
@@ -19,6 +21,7 @@ const Login = () => {
           localStorage.setItem(TOKEN_KEY, data.token);
         }
         alert(data.message || "Nice");
+        nav("/");
       })
       .catch((error) => alert("oh no\n\n" + error));
   };
