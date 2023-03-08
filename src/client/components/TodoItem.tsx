@@ -3,37 +3,38 @@ import { Item } from "../../../types";
 
 import { DELETE, PUT } from "../services/fetcher";
 
-const TodoItem = ({ content, is_complete, id }: Item) => {
-  const [isActive, setIsActive] = useState(true);
+interface TodoProps extends Item {
+  reload: () => void;
+}
 
+const TodoItem = ({ content, is_complete, id, reload }: TodoProps) => {
   const handleDelete = () => {
     DELETE(`/api/items/${id}`)
-      .then((data) => alert(data.message))
+      .then(reload)
       .catch((error) => alert(error));
   };
 
   const handleToggle = () => {
     PUT(`/api/items/${id}/toggle`, { currentStatus: is_complete })
-      .then((data) => alert(data.message))
+      .then(reload)
       .catch((error) => alert(error));
   };
 
   return (
-    <p className="">
-      {content}
-      {"    "}
-      <span>{is_complete ? "✔️" : "⏳"}</span>
+    <p className="card bg-info m-4">
+      <span className={`d-flex justify-content-center ${is_complete && "strike"}`}>{content}</span>
 
-      {isActive && (
-        <span className="d-block justify-content-center">
-          <button onClick={handleToggle} className="btn btn-sm btn-primary m-2">
-            Toggle to {is_complete ? "unfinished" : "complete"}?
-          </button>
-          <button onClick={handleDelete} className="btn btn-info btn-sm">
-            Delete?
-          </button>
+      <span onClick={handleToggle} className="d-flex justify-content-end">
+        {is_complete ? "🗹" : "☐"}
+      </span>
+
+      {is_complete ? (
+        <span className="d-flex justify-content-center">
+          <span onClick={handleDelete} className="btn btn-sm btn-danger m-2">
+            🗑️
+          </span>
         </span>
-      )}
+      ) : null}
     </p>
   );
 };

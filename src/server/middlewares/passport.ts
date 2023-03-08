@@ -42,6 +42,7 @@ export function configurePassport(app: Application) {
         if (payload.password) {
           delete payload.password;
         }
+        console.log(payload);
         return done(null, payload);
       }
     )

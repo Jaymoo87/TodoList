@@ -1,0 +1,35 @@
+/* ----------------------------------------------*\
+#GOOGLE FONTS
+\*----------------------------------------------*/
+
+/* @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Josefin+Sans:ital,wght@0,300;1,400;1,700&family=Jost:wght@400;500;700&display=swap");
+/*----------------------------------------------*\
+#CSS VARIABLES
+\*----------------------------------------------*/
+/* :root {
+  /*
+    *typography
+     */
+
+/* --body-font: "Josefin Sans", sans-serif;
+  --second-font: "Caveat", cursive; */
+
+/*
+    *colors
+     */
+
+/* --primary-color: hsl(227, 77%, 58%);
+  --title-color: hsl(0, 0%, 100%);
+  --text-color: hsl(0, 0%, 92%);
+  --bg-color: hsl(214, 34%, 16%);
+  --bg-color-alt: hsl(212, 14%, 21%);
+  --container-color: hsl(217, 18%, 14%);
+  --border-color: hsl(210, 2%, 65%);
+  --first-gradient: linear-gradient(0deg, var(--bg-color-alt) 0%, var(--bg-color) 100%);
+  --second-gradient: linear-gradient(180deg, var(--bg-color-alt) 0%, var(--bg-color) 100%);
+  --third-gradient: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color) 100%);
+}
+
+body {
+  font-family: var(--body-font); */
+/* } */

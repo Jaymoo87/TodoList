@@ -1,3 +1,4 @@
+import { SwalError } from "jaymooalertmodule";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { POST, TOKEN_KEY } from "../services/fetcher";
@@ -23,7 +24,7 @@ const Login = () => {
         alert(data.message || "Nice");
         nav("/");
       })
-      .catch((error) => alert("oh no\n\n" + error));
+      .catch((error) => SwalError(error, { title: "fucked it up" }));
   };
 
   return (
@@ -36,6 +37,14 @@ const Login = () => {
           </span>
         </h3>
         <form className="bg-warning p-3 shadow rounded">
+          <label>Name:</label>
+          <input
+            name="name"
+            value={form["email"]}
+            type="email"
+            className="form-control my-1 mb-2"
+            onChange={handleUpdateForm}
+          />
           <label>Email:</label>
           <input
             name="email"
