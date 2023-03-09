@@ -7,6 +7,11 @@ $warning: #C46D5E;
 $danger: #c44c36;
 $light: #f8f9fa;
 $dark: #459494;
+$bgcolor:#fdf1de5c;
+$navcolor: #00A693;
+$btncolor: #008080;
+$listbg:#7BA05B;
+$taskbg: #FF7538;
 
 // Then add them to your custom theme-colors map, together with any additional colors you might need
 $theme-colors: (
@@ -18,6 +23,11 @@ $theme-colors: (
 	danger: $danger,
 	light: $light,
 	dark: $dark,
+  bgcolor: $bgcolor,
+  navcolor: $navcolor,
+  btncolor: $btncolor,
+  listbg: $listbg,
+  taskbg: $taskbg
 	// add any additional color below
 );
 
@@ -61,3 +71,15 @@ body {
 } 
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+/*
+JENS COLORS
+
+asparagus: #7BA05B
+orange: #FF7538
+harvest_gold: #E6A817
+gamboge: #EF9B0F
+persian_green: #00A693
+teal: #008080
+*/

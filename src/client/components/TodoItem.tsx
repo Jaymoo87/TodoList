@@ -21,7 +21,7 @@ const TodoItem = ({ content, is_complete, id, reload }: TodoProps) => {
   };
 
   return (
-    <p className="card bg-info m-4">
+    <p className="card bg-taskbg border border-btncolor shadow m-4">
       <span className={`d-flex justify-content-center ${is_complete && "strike"}`}>{content}</span>
 
       <span onClick={handleToggle} className="d-flex justify-content-end">

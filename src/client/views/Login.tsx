@@ -1,4 +1,3 @@
-import { SwalError } from "jaymooalertmodule";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { POST, TOKEN_KEY } from "../services/fetcher";
@@ -24,7 +23,7 @@ const Login = () => {
         alert(data.message || "Nice");
         nav("/");
       })
-      .catch((error) => SwalError(error, { title: "fucked it up" }));
+      .catch((error) => console.log(error));
   };
 
   return (

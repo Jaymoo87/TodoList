@@ -20,7 +20,7 @@ const Home = () => {
     <>
       <div className="row justify-content-center">
         <Input reload={getItems} />
-        <div className="card bg-danger rounded">
+        <div className="card bg-navcolor col-lg-8 col-md-6 col-sm -12 rounded">
           {items.map((item) => (
             <TodoItem key={item.id} reload={getItems} {...item} />
           ))}

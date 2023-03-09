@@ -23,7 +23,7 @@ const Input = ({ reload }: { reload: () => void }) => {
         />
       </div>
       <div className="col-12 col-md-9 d-flex justify-content-center mt-4 ">
-        <button className="btn btn-info px-4 mb-4" onClick={handleSubmit}>
+        <button className="btn btn-btncolor px-4 mb-4" onClick={handleSubmit}>
           Add Item To The List
         </button>
       </div>
