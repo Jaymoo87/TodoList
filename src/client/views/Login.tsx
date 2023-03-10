@@ -6,6 +6,7 @@ const Login = () => {
   const nav = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -26,6 +27,8 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
 
+  const submitOnReturn = (e: React.KeyboardEvent<HTMLInputElement>) => {};
+
   return (
     <div className="row justify-content-center">
       <div className="col-12 col-md-9 col-lg-7 rounded-md">
@@ -36,14 +39,20 @@ const Login = () => {
           </span>
         </h3>
         <form className="bg-warning p-3 shadow rounded">
-          <label>Name:</label>
-          <input
-            name="name"
-            value={form["email"]}
-            type="email"
-            className="form-control my-1 mb-2"
-            onChange={handleUpdateForm}
-          />
+          {!isLogin ? (
+            <div>
+              {" "}
+              <label>Name:</label>
+              <input
+                name="name"
+                value={form["name"]}
+                type="email"
+                className="form-control my-1 mb-2"
+                onChange={handleUpdateForm}
+              />
+            </div>
+          ) : null}
+
           <label>Email:</label>
           <input
             name="email"
@@ -59,6 +68,7 @@ const Login = () => {
             type="password"
             className="form-control my-1"
             onChange={handleUpdateForm}
+            onKeyDown={submitOnReturn}
           />
 
           {form["email"] && form["password"] && (

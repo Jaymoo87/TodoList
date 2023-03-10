@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Item } from "../../../types";
+
+import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill, RiDeleteBin2Line } from "react-icons/ri";
 
 import { DELETE, PUT } from "../services/fetcher";
 
@@ -24,17 +26,21 @@ const TodoItem = ({ content, is_complete, id, reload }: TodoProps) => {
     <p className="card bg-taskbg border border-btncolor shadow m-4">
       <span className={`d-flex justify-content-center ${is_complete && "strike"}`}>{content}</span>
 
-      <span onClick={handleToggle} className="d-flex justify-content-end">
-        {is_complete ? "🗹" : "☐"}
+      <span onClick={handleToggle} className="d-flex justify-content-end mb-3 mx-3">
+        {is_complete ? (
+          <span>
+            <RiDeleteBin2Line size={"1em"} onClick={handleDelete} /> <RiCheckboxCircleFill />
+          </span>
+        ) : (
+          <RiCheckboxBlankCircleLine />
+        )}
       </span>
 
-      {is_complete ? (
-        <span className="d-flex justify-content-center">
-          <span onClick={handleDelete} className="btn btn-sm btn-danger m-2">
-            🗑️
-          </span>
+      {/* {is_complete ? (
+        <span className="d-flex justify-content-end">
+          <span onClick={handleDelete}></span>
         </span>
-      ) : null}
+      ) : null} */}
     </p>
   );
 };

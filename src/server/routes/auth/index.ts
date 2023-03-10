@@ -8,6 +8,11 @@ import tokenUtils from "../../utils/token";
 
 const authRouter = express.Router();
 
+authRouter.get("/verify", passport.authenticate("jwt", { session: false }), (req, res, next) => {
+  res.json({ message: "hey youre verified!" });
+  next();
+});
+
 authRouter.post("/register", async (req, res) => {
   const { name, email, password }: CreateableUser = req.body;
 

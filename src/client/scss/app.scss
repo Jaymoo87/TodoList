@@ -11,7 +11,8 @@ $bgcolor:#fdf1de5c;
 $navcolor: #00A693;
 $btncolor: #008080;
 $listbg:#7BA05B;
-$taskbg: #FF7538;
+$taskbg: #ff7438;
+$inputbg: hsla(17, 100%, 88%, 0.759);
 
 // Then add them to your custom theme-colors map, together with any additional colors you might need
 $theme-colors: (
@@ -27,7 +28,8 @@ $theme-colors: (
   navcolor: $navcolor,
   btncolor: $btncolor,
   listbg: $listbg,
-  taskbg: $taskbg
+  taskbg: $taskbg,
+  inputbg: $inputbg,
 	// add any additional color below
 );
 
@@ -83,3 +85,10 @@ gamboge: #EF9B0F
 persian_green: #00A693
 teal: #008080
 */
+
+
+.shadow::placeholder,
+.shadow::-moz-placeholder,
+.shadow::-webkit-input-placeholder {
+  font-style: italic;
+}
